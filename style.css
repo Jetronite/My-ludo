@@ -1,0 +1,144 @@
+/* ================================
+   THEME VARIABLES
+================================ */
+:root {
+    --board-size: 85vmin;
+    /* --board-width: 126vmin; */
+    /* Scales with screen */
+    --cell-size: calc(var(--board-size) / 15);
+    --gap: 2px;
+
+    --yellow: #f4c20d;
+    --blue: #4285f4;
+    --red: #db4437;
+    --green: #0f9d58;
+
+    --safe-color: lightgoldenrodyellow;
+    --neutral-bg: #fdfdfd;
+    --border: #333;
+}
+
+/* ================================
+   LAYOUT
+================================ */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: var(--neutral-bg);
+    font-family: sans-serif;
+}
+
+.game-container {
+    position: relative;
+    width: var(--board-size);
+    height: var(--board-size);
+    border: 4px solid var(--border);
+    border-radius: 12px;
+    background: white;
+}
+
+/* ================================
+   PLAYER HOMES
+================================ */
+.home {
+    position: absolute;
+    width: 20%;
+    height: 20%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: var(--gap);
+}
+
+#yellow-home {
+    background: var(--yellow);
+    top: 0;
+    left: 0;
+    border-bottom-right-radius: 40%;
+}
+
+#blue-home {
+    background: var(--blue);
+    top: 0;
+    right: 0;
+    border-bottom-left-radius: 40%;
+}
+
+#red-home {
+    background: var(--red);
+    bottom: 0;
+    left: 0;
+    border-top-right-radius: 40%;
+}
+
+#green-home {
+    background: var(--green);
+    bottom: 0;
+    right: 0;
+    border-top-left-radius: 40%;
+}
+
+/* ================================
+   TOKENS / SEEDS
+================================ */
+.seed {
+    border-radius: 50%;
+    background: var(--border);
+    margin: 10%;
+    width: 60%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+/* .seed[data-player="yellow"] {
+    background: var(--yellow);
+}
+
+.seed[data-player="blue"] {
+    background: var(--blue);
+}
+
+.seed[data-player="red"] {
+    background: var(--red);
+}
+
+.seed[data-player="green"] {
+    background: var(--green);
+} */
+
+/* ================================
+   BOARD GRID
+================================ */
+#board {
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
+    grid-template-rows: repeat(13, 1fr);
+    gap: var(--gap);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: none;
+    /* background: var(--neutral-bg); */
+    border: 1px solid var(--border);
+}
+
+
+
+/* Special board paths */
+.section.safe {
+    background: var(--safe-color);
+}
