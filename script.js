@@ -24,13 +24,28 @@ $(".home").each(function () {
     }
 });
 
-// Generate board: 15x15 grid = 225 cells
+// Generate board: 15x15 grid = 139 cells
 for (let i = 1; i <= 169; i++) {
     $("#board").append(`<div class="section" data-cell="${i}"></div>`);
 }
 
 // Example: Mark some safe zones (adjust based on game rules)
-const safeCells = [8, 22, 36, 50, 64, 78, 92, 106];
-safeCells.forEach(num => {
-    $(`#board .section[data-cell='${num}']`).addClass("safe");
-});
+const topPath = [30, 17, 18, 19, 20, 21, 22, 23, 36, 49]
+const rightPath = [50, 51, 64, 77, 90, 103, 116, 129, 128, 127]
+const bottomPath = [140, 153, 152, 151, 150, 149, 148, 147, 134, 121]
+const leftPath = [120, 119, 106, 93, 80, 67, 54, 41, 42, 43]
+const safeZone = [81, 82, 83, 84, 85, 86, 87, 88, 89, 33, 46, 59, 72, 98, 111, 124, 137]
+const centerPath = []
+
+const gamePath = [...topPath, ...rightPath, ...bottomPath, ...leftPath, ...safeZone];
+
+for (let index = 0; index < gamePath.length; index++) {
+    $(`.section[data-cell='${gamePath[index]}']`).addClass("gamePath")
+        .css("background-color", players[index % 4].color)
+        .append(`<div class="sectionCentre"></div>`)
+}
+
+$("[data-cell='17'], [data-cell='41'], [data-cell='127']").css("borderTopLeftRadius", "50%");
+$("[data-cell='23'], [data-cell='51'], [data-cell='121']").css("borderTopRightRadius", "50%");
+// $("[data-cell='17'], [data-cell='41'] [data-cell='127']").css("borderTopLeftRadius", "50%");
+// $("[data-cell='17'], [data-cell='41'] [data-cell='127']").css("borderTopLeftRadius", "50%");

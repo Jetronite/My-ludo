@@ -51,6 +51,7 @@ body {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: var(--gap);
+    z-index: 2;
 }
 
 #yellow-home {
@@ -87,30 +88,13 @@ body {
 .seed {
     border-radius: 50%;
     background: var(--border);
-    margin: 10%;
     width: 60%;
     height: 60%;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-self: center;
+    justify-self: center;
     z-index: 2;
 }
-
-/* .seed[data-player="yellow"] {
-    background: var(--yellow);
-}
-
-.seed[data-player="blue"] {
-    background: var(--blue);
-}
-
-.seed[data-player="red"] {
-    background: var(--red);
-}
-
-.seed[data-player="green"] {
-    background: var(--green);
-} */
 
 /* ================================
    BOARD GRID
@@ -131,14 +115,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: none;
-    /* background: var(--neutral-bg); */
-    border: 1px solid var(--border);
+    z-index: 1;
 }
 
+.sectionCentre {
+    background: var(--neutral-bg);
+    border-radius: 50%;
+    height: 50%;
+    width: 50%;
+}
 
-
-/* Special board paths */
-.section.safe {
-    background: var(--safe-color);
+.gamePath {
+    border: 1px solid var(--border);
 }
