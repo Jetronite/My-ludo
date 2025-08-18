@@ -49,8 +49,7 @@ const topPath = [30, 17, 18, 19, 20, 21, 22, 23, 36, 49]
 const rightPath = [50, 51, 64, 77, 90, 103, 116, 129, 128, 127]
 const bottomPath = [140, 153, 152, 151, 150, 149, 148, 147, 134, 121]
 const leftPath = [120, 119, 106, 93, 80, 67, 54, 41, 42, 43]
-const safeZone = [81, 82, 83, 84, 85, 86, 87, 88, 89, 33, 46, 59, 72, 98, 111, 124, 137]
-const centerPath = []
+const safeZone = [81, 82, 83, 87, 88, 89, 33, 46, 59, 111, 124, 137]
 
 const gamePath = [...topPath, ...rightPath, ...bottomPath, ...leftPath, ...safeZone];
 
@@ -68,22 +67,22 @@ $("[data-cell='43'], [data-cell='129'], [data-cell='153']").css("border-bottom-r
 
 
 // Apply colors to special cells
-const blueCells = [20, 23, 54, 46, 59, 72]
+const blueCells = [20, 23, 33, 54, 46, 59]
 for (let index = 0; index < blueCells.length; index++) {
     $(`[data-cell='${blueCells[index]}']`).css("background-color", players[1].color);   
 }
 
-const redCells = [98, 103, 124, 137, 147, 150]
+const redCells = [103, 111, 124, 137, 147, 150]
 for (let index = 0; index < redCells.length; index++) {
     $(`[data-cell='${redCells[index]}']`).css("background-color", players[2].color);
 }
 
-const yellowCells = [21, 41, 80, 82, 83, 84]
+const yellowCells = [21, 41, 80, 82, 83]
 for (let index = 0; index < yellowCells.length; index++) {
     $(`[data-cell='${yellowCells[index]}']`).css("background-color", players[0].color);
 }
 
-const greenCells = [86, 87, 88, 89, 90, 129, 148]
+const greenCells = [87, 88, 89, 90, 129, 148]
 for (let index = 0; index < greenCells.length; index++) {
     $(`[data-cell='${greenCells[index]}']`).css("background-color", players[3].color);
 }
@@ -96,10 +95,13 @@ for (let index = 0; index < greenCells.length; index++) {
 });
 
 
+// Centre Path
+const centerPath = [72, 84, 85, 86, 98]
+centerPath.forEach(cell => {
+    $(`[data-cell='${cell}']`).append(`<div class="sectionCentre"></div>`)
+})
 
-
-
-
+$("main").append(`<div class="finalCentre"><div class="centreTweek"></div></div>`)
 
 
 

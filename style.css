@@ -45,6 +45,7 @@ body {
 ================================ */
 .home {
     position: absolute;
+    border: 1px solid black;
     width: 20%;
     height: 20%;
     display: grid;
@@ -138,6 +139,7 @@ body {
 .sectionCentre {
     background: var(--neutral-bg);
     border-radius: 50%;
+    border: 1px solid var(--border);
     height: 50%;
     width: 50%;
 }
@@ -149,4 +151,34 @@ body {
 .start {
     font-size: 60%;
     background: none;
+}
+
+.finalCentre {
+    border: 1px solid black;
+    overflow: hidden;
+    position: absolute;
+    top: 35%;
+    left: 35%;
+    border-radius: 50%;
+    width: 30%;
+    height: 30%;
+    background: conic-gradient(
+        from 90deg,
+        var(--green) 0deg 90deg,
+        var(--red) 90deg 180deg,
+        var(--yellow) 180deg 270deg,
+        var(--blue) 270deg 360deg
+    );
+    transform: rotate(315deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.centreTweek {
+    height: 30%;
+    width: 30%;
+    border-radius: 50%;
+    background-color: var(--neutral-bg);
+    border: 1px solid black;
 }
