@@ -251,3 +251,8 @@ body {
     margin-top: 10px;
     font-size: 200%;
 }
+
+.highlight {
+    border: 2px solid var(--safe-color);    /* Add a border */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);    /* Add a shadow */
+}
