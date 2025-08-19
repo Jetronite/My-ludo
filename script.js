@@ -90,8 +90,9 @@ $(`[data-cell='147']`).addClass(`redStart`);
 
 
 /* ================================
-   A message to my future self: Don't return to this code until after you have thought seriously.
-   I wrote this code, but man my brain hurts
+   A message to my future self: Don't return to this code until after you have seriously 
+                                    cosidered how you want the code to run, because right
+                                    now man my brain hurts
    BACKEND IS INSANE
 ================================ */
 
