@@ -23,6 +23,7 @@
 ================================ */
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -162,13 +163,11 @@ body {
     border-radius: 50%;
     width: 30%;
     height: 30%;
-    background: conic-gradient(
-        from 90deg,
-        var(--green) 0deg 90deg,
-        var(--red) 90deg 180deg,
-        var(--yellow) 180deg 270deg,
-        var(--blue) 270deg 360deg
-    );
+    background: conic-gradient(from 90deg,
+            var(--green) 0deg 90deg,
+            var(--red) 90deg 180deg,
+            var(--yellow) 180deg 270deg,
+            var(--blue) 270deg 360deg);
     transform: rotate(315deg);
     display: flex;
     align-items: center;
@@ -193,8 +192,10 @@ body {
 }
 
 .arrow-line {
-    width: 20px;   /* shaft length */
-    height: 5px;  /* shaft thickness */
+    width: 20px;
+    /* shaft length */
+    height: 5px;
+    /* shaft thickness */
     background: black;
 }
 
@@ -229,4 +230,24 @@ body {
     left: 47%;
     top: 4%;
     transform: translateY(-50%);
+}
+
+.controls {
+    display: flex;
+    gap: 10%;
+    margin-top: 20px;
+    text-align: center;
+    /* font-size: 30%; */
+}
+
+#roll-dice {
+    padding: 1% 2%;
+    font-size: 200%;
+    cursor: pointer;
+}
+
+#dice-result,
+#turn-indicator {
+    margin-top: 10px;
+    font-size: 200%;
 }
