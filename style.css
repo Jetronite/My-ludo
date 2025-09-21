@@ -216,13 +216,13 @@ body {
 
 .arrow-down {
     top: 47%;
-    right: -3%;
+    right: -1%;
     transform: translateX(-50%) rotate(90deg);
 }
 
 .arrow-left {
     left: 47%;
-    bottom: -1%;
+    bottom: 1.5%;
     transform: translateY(-50%) rotate(180deg);
 }
 
@@ -255,4 +255,40 @@ body {
 .highlight {
     border: 2px solid var(--safe-color);    /* Add a border */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);    /* Add a shadow */
+}
+
+@media (min-width: 600px) and (max-width: 730px) {
+    .arrow-down {
+        right: -2%;
+    }
+
+    .arrow-left {
+        bottom: 0%;
+    }
+}
+
+@media (min-width: 490px) and (max-width: 600px) {
+    .arrow-down {
+        right: -4%;
+    }
+
+    .arrow-left {
+        bottom: -1%;
+    }
+}
+
+@media (min-width: 424px) and (max-width: 490px) {
+    .arrow-down {
+        right: -6%;
+    }
+
+    .arrow-left {
+        bottom: -1.5%;
+    }
+}
+
+@media (max-width: 424px) {
+    body {
+        display: none;
+    }
 }
