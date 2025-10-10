@@ -7,16 +7,24 @@ const players = [
 ];
 
 // Generate 4 tokens in each home
-$(".home").each(function () {
-  const playerId = $(this).attr("id").split("-")[0];
+document.querySelectorAll(".home").forEach(home => {
+  const playerId = home.id.split("-")[0];
   for (let i = 0; i < 4; i++) {
-    $(this).append(`<div class="seed ${playerId}Seed${i}" data-player="${playerId}" aria-label="${playerId} token"></div>`);
+    const div = document.createElement("div");
+    div.className = `seed ${playerId}Seed${i}`;
+    div.dataset.player = playerId;
+    div.setAttribute("aria-label", `${playerId} token`);
+    home.appendChild(div);
   }
 });
 
 // Generate board: 13x13 grid = 169 cells
+const board = document.getElementById("board");
 for (let i = 1; i <= 169; i++) {
-  $("#board").append(`<div class="section" data-cell="${i}"></div>`);
+  const div = document.createElement("div");
+  div.className = "section";
+  div.dataset.cell = i;
+  board.appendChild(div);
 }
 
 // Game paths
@@ -31,10 +39,13 @@ const paths = {
 // Apply path coloring
 const gamePath = [...paths.top, ...paths.right, ...paths.bottom, ...paths.left, ...paths.safe];
 gamePath.forEach((cell, index) => {
-  $(`.section[data-cell='${cell}']`)
-    .addClass("gamePath")
-    .css("background-color", players[index % 4].color)
-    .append(`<div class="sectionCentre"></div>`);
+  const section = document.querySelector(`.section[data-cell='${cell}']`);
+  section.classList.add("gamePath");
+  section.style.backgroundColor = players[index % 4].color;
+
+  const centre = document.createElement("div");
+  centre.className = "sectionCentre";
+  section.appendChild(centre);
 });
 
 // Corner rounding rules
@@ -44,7 +55,10 @@ gamePath.forEach((cell, index) => {
   { cells: [49, 119, 147], corner: "border-bottom-left-radius" },
   { cells: [43, 129, 153], corner: "border-bottom-right-radius" }
 ].forEach(rule => {
-  rule.cells.forEach(cell => $(`[data-cell='${cell}']`).css(rule.corner, "50%"));
+  rule.cells.forEach(cell => {
+    const el = document.querySelector(`[data-cell='${cell}']`);
+    el.style[rule.corner] = "50%";
+  });
 });
 
 // Extra coloring by player
@@ -54,30 +68,51 @@ const playerCells = {
   yellow: [21, 41, 80, 82, 83],
   green: [87, 88, 89, 90, 129, 148]
 };
+
 Object.entries(playerCells).forEach(([player, cells]) => {
   const color = players.find(p => p.id === player).color;
-  cells.forEach(cell => $(`[data-cell='${cell}']`).css("background-color", color));
+  cells.forEach(cell => {
+    const el = document.querySelector(`[data-cell='${cell}']`);
+    el.style.backgroundColor = color;
+  });
 });
 
 // Start cells
 [147, 41, 23, 129].forEach(cell => {
-  $(`[data-cell='${cell}']`).find(".sectionCentre").remove();
-  $(`[data-cell='${cell}']`).append(`<div class="start">START</div>`);
+  const section = document.querySelector(`[data-cell='${cell}']`);
+  const centre = section.querySelector(".sectionCentre");
+  if (centre) centre.remove();
+
+  const startDiv = document.createElement("div");
+  startDiv.className = "start";
+  startDiv.textContent = "START";
+  section.appendChild(startDiv);
 });
 
 // Centre Path
 [72, 84, 85, 86, 98].forEach(cell => {
-  $(`[data-cell='${cell}']`).append(`<div class="sectionCentre"></div>`);
+  const section = document.querySelector(`[data-cell='${cell}']`);
+  const div = document.createElement("div");
+  div.className = "sectionCentre";
+  section.appendChild(div);
 });
 
 // Add final centre
-$("main").append(`<div class="finalCentre"><div class="centreTweek"></div></div>`);
+const main = document.querySelector("main");
+const finalCentre = document.createElement("div");
+finalCentre.className = "finalCentre";
 
+const centreTweek = document.createElement("div");
+centreTweek.className = "centreTweek";
 
-$(`[data-cell='41']`).addClass(`yellowStart`);
-$(`[data-cell='23']`).addClass(`blueStart`);
-$(`[data-cell='129']`).addClass(`greenStart`);
-$(`[data-cell='147']`).addClass(`redStart`);
+finalCentre.appendChild(centreTweek);
+main.appendChild(finalCentre);
+
+// Add start cell classes
+document.querySelector(`[data-cell='41']`).classList.add("yellowStart");
+document.querySelector(`[data-cell='23']`).classList.add("blueStart");
+document.querySelector(`[data-cell='129']`).classList.add("greenStart");
+document.querySelector(`[data-cell='147']`).classList.add("redStart");
 
 
 
